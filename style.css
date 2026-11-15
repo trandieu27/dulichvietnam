@@ -1,0 +1,94 @@
+/* ===== Mobile (mặc định, KHÔNG có media query) ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #dedede;
+  margin: 0;
+  padding: 10px;
+}
+
+h1 {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 32px;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;   /* lưới 1 cột */
+  gap: 10px;                    /* khoảng cách 10px giữa hàng và cột */
+}
+
+main div {
+  background-color: #fff;
+  border: 2px solid #999;
+  padding: 10px;
+}
+
+main img {
+  display: block;
+  margin: auto;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;            /* ảnh không bị méo khi bo tròn */
+}
+
+p {
+  text-align: center;
+  font-size: 25px;
+  font-family: Arial, sans-serif;
+  color: #000;
+}
+
+/* ===== Tablet: từ 772px ===== */
+@media (min-width: 772px) {
+  main {
+    grid-template-columns: 1fr 1fr;       /* 2 cột */
+  }
+
+  main img {
+    border-radius: 50%;                   /* ảnh thành hình tròn */
+  }
+
+  main div:last-child {
+    grid-column: span 2;                  /* hình cuối chiếm 2 cột */
+  }
+}
+
+/* ===== Desktop: từ 992px ===== */
+@media (min-width: 992px) {
+  main div:nth-child(3n) {
+    grid-column: span 2;                  /* mỗi hình thứ 3 chiếm 2 cột */
+  }
+
+  main img {
+    border-radius: 0;                     /* bỏ bo góc */
+  }
+}
+
+/* ===== Giảm chuyển động ===== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;                /* bỏ cuộn mượt */
+  }
+}
+
+/* ===== Chế độ tối ===== */
+@media (prefers-color-scheme: dark) {
+  main div {
+    background-color: #222;               /* nền tối */
+    border-color: #000;                   /* viền đen */
+  }
+
+  main p {
+    color: #ffd54f;                       /* chữ vàng nhạt */
+  }
+}
